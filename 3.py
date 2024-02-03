@@ -38,7 +38,7 @@ def main():
         if games:
             titles = [i["GameName"] for i in games]
             print(f"Персонаж {character} встречается в играх:")
-            print(titles[:5], sep="\n")
+            print(*titles[:5], sep="\n")
             if len(titles) > 5:
                 print("и др.")
         else:
