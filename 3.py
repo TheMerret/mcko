@@ -37,7 +37,10 @@ def main():
         games = reader[lower:upper]
         if games:
             titles = [i["GameName"] for i in games]
-            print(*titles[:5], sep=", ")
+            print(f"Персонаж {character} встречается в играх:")
+            print(titles[:5], sep="\n")
+            if len(titles) > 5:
+                print("и др.")
         else:
             print("Этого персонажа не существует")
 
