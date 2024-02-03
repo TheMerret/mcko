@@ -6,16 +6,19 @@ def main():
     выводи игры с участием персонажа
     :return:
     """
+    # читаем файл
     with open("game.txt", "r", encoding="utf8") as fd:
         reader = csv.DictReader(fd, delimiter='$')
         next(reader)
         reader = list(reader)
+    # сортируем
     reader.sort(key=lambda x: x["characters"])
     while True:
         req = input()
         if req == "game":
             break
         character = req
+        # lower bound
         l = 0
         r = len(reader)
         while l < r:
@@ -25,6 +28,7 @@ def main():
             else:
                 r = m
         lower = l
+        # upper bound
         l = 0
         r = len(reader)
         while l < r:
@@ -35,6 +39,7 @@ def main():
                 l = m + 1
         upper = l
         games = reader[lower:upper]
+        # обрабатываем найденное
         if games:
             titles = [i["GameName"] for i in games]
             print(f"Персонаж {character} встречается в играх:")
